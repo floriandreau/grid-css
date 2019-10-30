@@ -1,0 +1,234 @@
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="grid.css">
+    <title>Grid</title>
+</head>
+<body>
+
+    <!-- Pour naviguer dans le code il est possible de rechercher
+        hr (ctrl + f et écrire hr dans la barre de recherche en haut)
+        Pour le code css la technique est la même -->
+
+        <!-- Liens de cours sur la grille
+        https://css-tricks.com/snippets/css/complete-guide-grid/
+        https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Grid_Layout/Alignement_des_bo%C3%AEtes_avec_les_grilles_CSS
+        
+        -->
+
+    <h1>Créer sa grille</h1>
+    <!-- Astuce d'une grille presque parfaite -->
+    <h2>Une grille presque parfaite</h2>
+
+    <p>
+        Une grille presque parfaite c'est possible ! Et c'est très pratique. 
+        C'est pourquoi il est conseillé de créer une grille de 12 colonnes.
+        La raison est qu'un 12 est divisible par 2, 3, 4 et 6. Il est donc 
+        fortement recommandé d'utiliser une grille de 12 colonnes, comme le fait 
+        Bootstrap.
+    </p>
+
+    <hr>
+
+    <!-- Créer une grille -->
+
+    <h2>Créer une grille</h2>
+
+    <p>
+        Pour créer une grille c'est simple. Il faut avoir une balise qui deviendra la
+         grille. Généralement une div, mais on peut faire une grille à partir du body
+         , section, article.
+    </p>
+
+    <h3>Exemple</h3>
+
+    <textarea name="exemple" id="créer_grille" readonly>
+        &lt;div class="container"&gt;
+            &lt;p&gt;
+                Un petit texte pour l'exemple.
+            &lt;/p&gt;
+        &lt;/div&gt;
+    </textarea>
+
+    <textarea name="exemple" id="créer_grille" readonly>
+            .container{
+                display: grid;
+                grid-template-columns: repeat(12, 1fr);
+                grid-auto-rows: 1fr;
+            }
+    </textarea>
+
+    <p>
+        Avec ce code on transforme la div en une grille de 12 colonnes, avec une 
+        génération automatique de ligne. Chaque colonnes prend une fraction de l'espace
+         disponible. <br>
+        Ce qui veut dire que si on fait une grille de 12 colonnes sur le body alors
+         chaque colonnes se partagera équitablement la taille du body. C'est ce qui 
+         permet de rendre la grille responsive.
+    </p>
+
+    <hr>
+
+    <!-- Utiliser la grille (méthode start/end) -->
+
+    <h2>Utiliser la grille</h2>
+
+    <p>
+        Une fois qu'on a notre grille il faut savoir l'utiliser. Pour placer un élément
+         dans la grille il faut dire à l'élément de se placer de x colonnes à x colonnes
+          et de x lignes à x lignes. <br>
+        Le mieux c'est de regarder l'exemple.
+    </p>
+    
+
+
+    <textarea name="exemple" id="créer_grille" readonly>
+            .element{
+                grid-column-start: 1;
+                grid-column-end: 2;
+                grid-row-start: 1;    
+                grid-row-end: 2;
+            }
+    </textarea>
+
+    <h3>Exemple</h3>
+
+    <div class="container">
+            <div class="item_1">
+                <p>
+                    Cette balise commence de la bordure 1 et fini à la bordure 2 des 
+                    colonnes. Et de la bordure 1 à la 2 des lignes.
+                </p>
+            </div>
+            <div class="item_2"></div>
+            <div class="item_3"></div>
+            <div class="item_4"></div>
+            <div class="item_5"></div>
+            <div class="item_6"></div>
+            <div class="item_7"></div>
+            <div class="item_8"></div>
+            <div class="item_9"></div>
+            <div class="item_10"></div>
+            <div class="item_11"></div>
+            <div class="item_12"></div>
+        </div>
+
+        <p>
+            Dans cette exemple je montre des choses qu'on peut faire avec une grille. 
+            Mais ce qu'il faut retenir c'est que les éléments se place PAS par rapport 
+            à la cellule mais par rapport aux bordures. <br>
+            On peut aussi voir que c'est la même chose pour les lignes, et qu'on est pas
+             obligé de commencé à la bordure 1. La valeur fr s'addapte à son contenu.
+        </p>
+
+        <hr>
+
+    <!-- Utiliser la grille (méthode column/row) -->
+
+        <h2>La méthode Column/Row</h2>
+
+        <p>
+            Cette méthode est comme la première, on va définir le début et la fin, mais sur une seule ligne.
+        </p>
+
+        <textarea name="exemple" id="créer_grille" readonly>
+            .element{
+                grid-column: 1/2;
+                grid-row: 1/2;
+            }
+    </textarea>
+
+        <h3>Exemple</h3>
+
+        <div class="container">
+            <div class="element_1">
+                <p>
+                    Cette balise commence de la bordure 1 et fini à la bordure 2 des 
+                    colonnes. Et de la bordure 1 à la 2 des lignes.
+                </p>
+            </div>
+            <div class="element_2"></div>
+            <div class="element_3"></div>
+            <div class="element_4"></div>
+            <div class="element_5"></div>
+            <div class="element_6"></div>
+            <div class="element_7"></div>
+            <div class="element_8"></div>
+            <div class="element_9"></div>
+            <div class="element_10"></div>
+            <div class="element_11"></div>
+            <div class="element_12"></div>
+        </div>
+
+        <p>
+            On voit pas de diférence sur les exemples et pourtant dans le code il y en a une.
+        </p>
+
+    <!-- Faire un éspacement entre les cellules -->
+
+    <h2>Escpacer les cellules</h2>
+
+        <p>
+            Il est possible de mettre un espace entre les cellules. On peut en avoir 
+            besoin pour certain cas, comme une liste d'image avec un ecart entre eux.
+        </p>
+
+        <div class="container_gap">
+           <div class="element_1">
+                <p>
+                    Cette balise commence de la bordure 1 et fini à la bordure 2 des 
+                    colonnes. Et de la bordure 1 à la 2 des lignes.
+                </p>
+            </div>
+            <div class="element_2"></div>
+            <div class="element_3"></div>
+            <div class="element_4"></div>
+            <div class="element_5"></div>
+            <div class="element_6"></div>
+            <div class="element_7"></div>
+            <div class="element_8"></div>
+            <div class="element_9"></div>
+            <div class="element_10"></div>
+            <div class="element_11"></div>
+            <div class="element_12"></div>
+        </div>
+
+        <p>
+            Le préfixe gride- se retir progressivement, mais certains navigateurs en on besoin.
+        </p>
+
+        <hr>
+
+    <!-- Utiliser z-index dans la grille -->
+
+        <h2>Le z-index des les grilles</h2>
+
+        <p>
+            En regardant les exemples on peut voir un z-index. Il est donc possible d'utiliser le z-index dans la grille.
+        </p>
+
+        <hr>
+
+        <!-- La grille avec les 13 bordures pour mieux comprendre l'utilisation -->
+
+        <h2>Les bordures de la grille</h2>
+
+        <div class="container-bord">
+            <div class="bord"></div>
+            <div class="bord"></div>
+            <div class="bord"></div>
+            <div class="bord"></div>
+            <div class="bord"></div>
+            <div class="bord"></div>
+            <div class="bord"></div>
+            <div class="bord"></div>
+            <div class="bord"></div>
+            <div class="bord"></div>
+            <div class="bord"></div>
+            <div class="bord"></div>
+        </div>
+
+</body>
+</html>
